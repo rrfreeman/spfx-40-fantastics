@@ -1,10 +1,10 @@
 /**
- * @file
- * FckText Web Part for SharePoint Framework SPFx
- *
- * Author: Olivier Carpentier
- * Copyright (c) 2016
- */
+* @file
+* FckText Web Part for SharePoint Framework SPFx
+*
+* Author: Olivier Carpentier
+* Copyright (c) 2016
+*/
 import {
   BaseClientSideWebPart,
   IPropertyPaneConfiguration,
@@ -13,43 +13,34 @@ import {
 } from '@microsoft/sp-webpart-base';
 import { DisplayMode, Version } from '@microsoft/sp-core-library';
 import { Environment, EnvironmentType } from '@microsoft/sp-core-library';
-
 import * as strings from 'fckTextStrings';
 import { IFckTextWebPartProps } from './IFckTextWebPartProps';
 import { SPComponentLoader } from '@microsoft/sp-loader';
-
 export default class FckTextWebPart extends BaseClientSideWebPart<IFckTextWebPartProps> {
-
   private guid: string;
-
   /**
-   * @function
-   * Web part contructor.
-   */
+  * @function
+  * Web part contructor.
+  */
   public constructor(context?: IWebPartContext) {
     super();
-
     this.guid = this.getGuid();
-
     //Hack: to invoke correctly the onPropertyChange function outside this class
     //we need to bind this object on it first
     this.onPropertyPaneFieldChanged = this.onPropertyPaneFieldChanged.bind(this);
   }
-
   /**
-   * @function
-   * Gets WP data version
-   */
+  * @function
+  * Gets WP data version
+  */
   protected get dataVersion(): Version {
     return Version.parse('1.0');
   }
-
   /**
-   * @function
-   * Renders HTML code
-   */
+  * @function
+  * Renders HTML code
+  */
   public render(): void {
-
     if (Environment.type === EnvironmentType.ClassicSharePoint) {
       var errorHtml = '';
       errorHtml += '<div style="color: red;">';
@@ -62,27 +53,28 @@ export default class FckTextWebPart extends BaseClientSideWebPart<IFckTextWebPar
       return;
     }
 
-
     if (this.displayMode == DisplayMode.Edit) {
       //Edit mode
       var html = '';
       html += "<textarea name='" + this.guid + "-editor' id='" + this.guid + "-editor'>" + this.properties.text + "</textarea>";
       this.domElement.innerHTML = html;
 
+      var sheet = document.createElement('style');
+      sheet.innerHTML = "cke_top {display:block!important;}";
+      document.body.appendChild(sheet);
+
       var ckEditorCdn: string = '//cdn.ckeditor.com/4.6.2/full/ckeditor.js';
       SPComponentLoader.loadScript(ckEditorCdn, { globalExportsName: 'CKEDITOR' }).then((CKEDITOR: any): void => {
         if (this.properties.inline == null || this.properties.inline === false)
-          CKEDITOR.replace( this.guid + '-editor', {
-              skin: 'moono-lisa,//cdn.ckeditor.com/4.6.2/full-all/skins/moono-lisa/'
-          }  );
+          CKEDITOR.replace(this.guid + '-editor', {
+            skin: 'moono-lisa,//cdn.ckeditor.com/4.6.2/full-all/skins/moono-lisa/'
+          });
         else
-          CKEDITOR.inline( this.guid + '-editor', {
-              skin: 'moono-lisa,//cdn.ckeditor.com/4.6.2/full-all/skins/moono-lisa/'
-          }   );
-
+          CKEDITOR.inline(this.guid + '-editor', {
+            skin: 'moono-lisa,//cdn.ckeditor.com/4.6.2/full-all/skins/moono-lisa/'
+          });
         for (var i in CKEDITOR.instances) {
-          CKEDITOR.instances[i].on('change', (elm?, val?) =>
-          {
+          CKEDITOR.instances[i].on('change', (elm?, val?) => {
             //CKEDITOR.instances[i].updateElement();
             elm.sender.updateElement();
             var value = ((document.getElementById(this.guid + '-editor')) as any).value;
@@ -90,6 +82,11 @@ export default class FckTextWebPart extends BaseClientSideWebPart<IFckTextWebPar
               this.properties.text = value;
             }
           });
+          CKEDITOR.instances[i].on('instanceReady', function () {
+            //console.log("instance ready ");
+            let ckElements = document.getElementsByClassName("cke_top") as HTMLCollectionOf<HTMLElement>;
+            ckElements[0].style.display = "block"
+          })
         }
       });
     }
@@ -98,30 +95,27 @@ export default class FckTextWebPart extends BaseClientSideWebPart<IFckTextWebPar
       this.domElement.innerHTML = this.properties.text;
     }
   }
-
   /**
-   * @function
-   * Generates a GUID
-   */
+  * @function
+  * Generates a GUID
+  */
   private getGuid(): string {
     return this.s4() + this.s4() + '-' + this.s4() + '-' + this.s4() + '-' +
       this.s4() + '-' + this.s4() + this.s4() + this.s4();
   }
-
   /**
-   * @function
-   * Generates a GUID part
-   */
+  * @function
+  * Generates a GUID part
+  */
   private s4(): string {
-      return Math.floor((1 + Math.random()) * 0x10000)
-        .toString(16)
-        .substring(1);
+    return Math.floor((1 + Math.random()) * 0x10000)
+      .toString(16)
+      .substring(1);
   }
-
   /**
-   * @function
-   * PropertyPanel settings definition
-   */
+  * @function
+  * PropertyPanel settings definition
+  */
   protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
     return {
       pages: [
