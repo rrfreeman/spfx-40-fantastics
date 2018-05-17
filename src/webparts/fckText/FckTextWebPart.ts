@@ -14,6 +14,7 @@ import {
 import { DisplayMode, Version } from '@microsoft/sp-core-library';
 import { Environment, EnvironmentType } from '@microsoft/sp-core-library';
 import * as strings from 'fckTextStrings';
+require('//smud.sharepoint.com/sites/SMUDiNet/SiteAssets/apps/ckeditor/ckeditor.js');
 import { IFckTextWebPartProps } from './IFckTextWebPartProps';
 import { SPComponentLoader } from '@microsoft/sp-loader';
 export default class FckTextWebPart extends BaseClientSideWebPart<IFckTextWebPartProps> {
@@ -63,15 +64,15 @@ export default class FckTextWebPart extends BaseClientSideWebPart<IFckTextWebPar
       sheet.innerHTML = "cke_top {display:block!important;}";
       document.body.appendChild(sheet);
 
-      var ckEditorCdn: string = '//cdn.ckeditor.com/4.6.2/full/ckeditor.js';
+      var ckEditorCdn: string = '//smud.sharepoint.com/sites/SMUDiNet/SiteAssets/apps/ckeditor/ckeditor.js';
       SPComponentLoader.loadScript(ckEditorCdn, { globalExportsName: 'CKEDITOR' }).then((CKEDITOR: any): void => {
         if (this.properties.inline == null || this.properties.inline === false)
           CKEDITOR.replace(this.guid + '-editor', {
-            skin: 'moono-lisa,//cdn.ckeditor.com/4.6.2/full-all/skins/moono-lisa/'
+            skin: 'moono-lisa,//smud.sharepoint.com/sites/SMUDiNet/SiteAssets/apps/ckeditor/skins/moono-lisa/'
           });
         else
           CKEDITOR.inline(this.guid + '-editor', {
-            skin: 'moono-lisa,//cdn.ckeditor.com/4.6.2/full-all/skins/moono-lisa/'
+            skin: 'moono-lisa,//smud.sharepoint.com/sites/SMUDiNet/SiteAssets/apps/ckeditor/skins/moono-lisa/'
           });
         for (var i in CKEDITOR.instances) {
           CKEDITOR.instances[i].on('change', (elm?, val?) => {
