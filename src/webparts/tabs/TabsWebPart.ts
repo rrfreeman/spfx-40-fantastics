@@ -325,12 +325,12 @@ Main components
 
     if (this.displayMode == DisplayMode.Edit) {
 
-        var ckEditorCdn = '//cdn.ckeditor.com/4.6.2/full/ckeditor.js';
+        var ckEditorCdn = 'smud.sharepoint.com/sites/SMUDiNet/SiteAssets/apps/ckeditor/ckeditor.js';
         SPComponentLoader.loadScript(ckEditorCdn, { globalExportsName: 'CKEDITOR' }).then((CKEDITOR: any): void => {
           if (this.properties.inline == null || this.properties.inline === false) {
             for (var tab = 0; tab < this.properties.tabs.length; tab++) {
               CKEDITOR.replace( this.guid + '-editor-' + tab, {
-                    skin: 'moono-lisa,//cdn.ckeditor.com/4.6.2/full-all/skins/moono-lisa/'
+                    skin: 'moono-lisa,//smud.sharepoint.com/sites/SMUDiNet/SiteAssets/apps/ckeditor/skins/moono-lisa/'
               }  );
             }
 
@@ -338,7 +338,7 @@ Main components
           else {
             for (var tab2 = 0; tab2 < this.properties.tabs.length; tab2++) {
               CKEDITOR.inline( this.guid + '-editor-' + tab2, {
-                    skin: 'moono-lisa,//cdn.ckeditor.com/4.4.3/full-all/skins/moono-lisa/'
+                    skin: 'moono-lisa,//smud.sharepoint.com/sites/SMUDiNet/SiteAssets/apps/ckeditor/skins/moono-lisa/'
               }   );
             }
           }
