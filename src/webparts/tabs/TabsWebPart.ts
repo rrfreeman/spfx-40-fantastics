@@ -325,26 +325,26 @@ Main components
 
     if (this.displayMode == DisplayMode.Edit) {
 
-        var ckEditorCdn = 'smud.sharepoint.com/sites/SMUDiNet/SiteAssets/apps/ckeditor/ckeditor.js';
-        SPComponentLoader.loadScript(ckEditorCdn, { globalExportsName: 'CKEDITOR' }).then((CKEDITOR: any): void => {
+        var ckEditorspfxfortyCdn = 'smud.sharepoint.com/sites/SMUDiNet/SiteAssets/apps/ckeditorspfxforty/ckeditorspfxforty.js';
+        SPComponentLoader.loadScript(ckEditorspfxfortyCdn, { globalExportsName: 'CKEDITORspfxFORTY' }).then((CKEDITORspfxFORTY: any): void => {
           if (this.properties.inline == null || this.properties.inline === false) {
             for (var tab = 0; tab < this.properties.tabs.length; tab++) {
-              CKEDITOR.replace( this.guid + '-editor-' + tab, {
-                    skin: 'moono-lisa,//smud.sharepoint.com/sites/SMUDiNet/SiteAssets/apps/ckeditor/skins/moono-lisa/'
+              CKEDITORspfxFORTY.replace( this.guid + '-editor-' + tab, {
+                    skin: 'moono-lisa,//smud.sharepoint.com/sites/SMUDiNet/SiteAssets/apps/ckeditorspfxforty/skins/moono-lisa/'
               }  );
             }
 
           }
           else {
             for (var tab2 = 0; tab2 < this.properties.tabs.length; tab2++) {
-              CKEDITOR.inline( this.guid + '-editor-' + tab2, {
-                    skin: 'moono-lisa,//smud.sharepoint.com/sites/SMUDiNet/SiteAssets/apps/ckeditor/skins/moono-lisa/'
+              CKEDITORspfxFORTY.inline( this.guid + '-editor-' + tab2, {
+                    skin: 'moono-lisa,//smud.sharepoint.com/sites/SMUDiNet/SiteAssets/apps/ckeditorspfxforty/skins/moono-lisa/'
               }   );
             }
           }
 
-          for (var i in CKEDITOR.instances) {
-            CKEDITOR.instances[i].on('change', (elm?, val?) =>
+          for (var i in CKEDITORspfxFORTY.instances) {
+            CKEDITORspfxFORTY.instances[i].on('change', (elm?, val?) =>
             {
               elm.sender.updateElement();
               var value = ((document.getElementById(elm.sender.name)) as any).value;

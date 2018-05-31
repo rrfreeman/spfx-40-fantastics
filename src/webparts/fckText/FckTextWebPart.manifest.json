@@ -11,7 +11,7 @@
     "groupId": "4a6dc2e5-7bd2-4ab7-a830-8107d2b7ee5a",
     "group": { "default": "Text Tools" },
     "title": { "default": "RichText Editor" },
-    "description": { "default": "This Web Part is a rich alternative text editor. Instead of the native SharePoint Editor, this Web Part uses the editor CKEditor, which is a popular and powerful JavaScript full HTML code editor. You can configure the type of integration (fixed or dynamic)." },
+    "description": { "default": "This Web Part is a rich alternative text editor. Instead of the native SharePoint Editor, this Web Part uses the editor CKEditorspfxforty, which is a popular and powerful JavaScript full HTML code editor. You can configure the type of integration (fixed or dynamic)." },
     "officeFabricIconFontName": "ClearFormatting",
     "properties": {
       "text": "",

@@ -80,7 +80,7 @@ export default class SimplePollWebPartHost extends React.Component<ISimplePollWe
     this.closeError = this.closeError.bind(this);
     this.onVoteChanged = this.onVoteChanged.bind(this);
     this.loadQuestions = this.loadQuestions.bind(this);
-	};
+	}
 
   /**
    * @function
