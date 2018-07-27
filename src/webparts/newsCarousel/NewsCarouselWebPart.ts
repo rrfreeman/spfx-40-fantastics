@@ -122,6 +122,7 @@ export default class NewsCarouselWebPart extends BaseClientSideWebPart<INewsCaro
         gallery_play_interval: this.properties.speed,
         gallery_pause_on_mouseover: this.properties.pauseOnMouseover,
         gallery_carousel: this.properties.carousel,
+        gallery_mousewheel_role: !this.properties.enableMouseWheelZoom,
         slider_enable_progress_indicator: this.properties.enableProgressIndicator,
         slider_enable_play_button: this.properties.enablePlayButton,
         slider_enable_fullscreen_button: this.properties.enableFullscreenButton,
@@ -217,6 +218,9 @@ export default class NewsCarouselWebPart extends BaseClientSideWebPart<INewsCaro
                 }),
                 PropertyPaneToggle('enableZoomPanel', {
                   label: strings.EnableZoomPanel
+                }),
+                PropertyPaneToggle('enableMouseWheelZoom', {
+                  label: strings.EnableMouseWheelZoom
                 }),
                 PropertyPaneToggle('controlsAlwaysOn', {
                   label: strings.ControlsAlwaysOn

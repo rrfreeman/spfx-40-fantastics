@@ -22,6 +22,7 @@ define([], function() {
     "EnablePlayButton": "Aktivieren der Schaltfläche \"Starte\"",
     "EnableFullscreenButton": "Aktivieren Sie \"Vollbild\"",
     "EnableZoomPanel": "Zoom Fenster aktivieren",
+    "EnableMouseWheelZoom": "Aktivieren Sie Mausrad Zoom",
     "ControlsAlwaysOn": "Steuerelemente, die immer auf",
     "PreserveRatio": "Verhältnis zu bewahren",
     "PauseOnMouseover": "Blieb auf Mausbewegung",

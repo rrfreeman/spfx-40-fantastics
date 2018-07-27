@@ -22,6 +22,7 @@ define([], function() {
     "EnablePlayButton": "Enable Play Button",
     "EnableFullscreenButton": "Enable Fullscreen Button",
     "EnableZoomPanel": "Enable Zoom Panel",
+    "EnableMouseWheelZoom": "Enable Mouse Wheel Zoom",
     "ControlsAlwaysOn": "Controls Always On",
     "PreserveRatio": "Preserve Ratio",
     "PauseOnMouseover": "Pause On Mouseover",

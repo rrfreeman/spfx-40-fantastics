@@ -22,6 +22,7 @@ define([], function() {
     "EnablePlayButton": "Afficher le bouton de lecture",
     "EnableFullscreenButton": "Afficher le bouton de plein écran",
     "EnableZoomPanel": "Afficher le panneau de zoom",
+    "EnableMouseWheelZoom": "Activer la molette de la souris Zoom",
     "ControlsAlwaysOn": "Boutons de contrôle toujours visibles",
     "PreserveRatio": "Preserver le ratio",
     "PauseOnMouseover": "Mettre en pause au passage de la souris",
