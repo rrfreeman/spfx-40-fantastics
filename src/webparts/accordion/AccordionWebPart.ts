@@ -116,29 +116,28 @@ export default class AccordionWebPart extends BaseClientSideWebPart<IAccordionWe
 
     if (this.displayMode == DisplayMode.Edit) {
         //If the display mode is Edit, loads the CK Editor plugin
-        var ckEditorCdn = '//cdn.ckeditor.com/4.6.2/full/ckeditor.js';
-        //Loads the Javascript from the CKEditor CDN
-        SPComponentLoader.loadScript(ckEditorCdn, { globalExportsName: 'CKEDITOR' }).then((CKEDITOR: any): void => {
+        var ckEditorspfxfortyCdn = 'https://smud.sharepoint.com/sites/SMUDiNet/SiteAssets/apps/ckeditorspfxforty/CKEDITORspfxFORTY.js';
+        //Loads the Javascript from the CKEditorspfxforty CDN
+        SPComponentLoader.loadScript(ckEditorspfxfortyCdn, { globalExportsName: 'CKEDITORspfxFORTY' }).then((CKEDITORspfxFORTY: any): void => {
           if (this.properties.inline == null || this.properties.inline === false) {
             //If mode is not inline, loads the script with the replace method
             for (var tab = 0; tab < this.properties.tabs.length; tab++) {
-              CKEDITOR.replace( this.guid + '-editor-' + tab, {
-                    skin: 'moono-lisa,//cdn.ckeditor.com/4.6.2/full-all/skins/moono-lisa/'
+              CKEDITORspfxFORTY.replace( this.guid + '-editor-' + tab, {
+                    skin: 'moono-lisa,//smud.sharepoint.com/sites/SMUDiNet/SiteAssets/apps/ckeditorspfxforty/skins/moono-lisa/'
               });
             }
-
           }
           else {
             //Mode is inline, so loads the script with the inline method
             for (var tab2 = 0; tab2 < this.properties.tabs.length; tab2++) {
-              CKEDITOR.inline( this.guid + '-editor-' + tab2, {
-                    skin: 'moono-lisa,//cdn.ckeditor.com/4.6.2/full-all/skins/moono-lisa/'
+              CKEDITORspfxFORTY.inline( this.guid + '-editor-' + tab2, {
+                    skin: 'moono-lisa,//smud.sharepoint.com/sites/SMUDiNet/SiteAssets/apps/ckeditorspfxforty/skins/moono-lisa/'
               });
             }
           }
-          //Catch the CKEditor instances change event to save the content
-          for (var i in CKEDITOR.instances) {
-            CKEDITOR.instances[i].on('change', (elm?, val?) =>
+          //Catch the CKEditorspfxforty instances change event to save the content
+          for (var i in CKEDITORspfxFORTY.instances) {
+            CKEDITORspfxFORTY.instances[i].on('change', (elm?, val?) =>
             {
               //Updates the textarea
               elm.sender.updateElement();

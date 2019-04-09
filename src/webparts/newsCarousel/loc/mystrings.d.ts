@@ -21,6 +21,7 @@ declare interface INewsCarouselStrings {
   EnablePlayButton: string;
   EnableFullscreenButton: string;
   EnableZoomPanel: string;
+  EnableMouseWheelZoom: string;
   ControlsAlwaysOn: string;
   PreserveRatio: string;
   PauseOnMouseover: string;

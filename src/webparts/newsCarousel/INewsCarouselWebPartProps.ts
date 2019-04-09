@@ -7,6 +7,7 @@ export interface INewsCarouselWebPartProps {
   enablePlayButton: boolean;
   enableFullscreenButton: boolean;
   enableZoomPanel: boolean;
+  enableMouseWheelZoom: boolean;
   controlsAlwaysOn: boolean;
 
   preserveRatio: boolean;

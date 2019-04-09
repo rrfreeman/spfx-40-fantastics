@@ -19,6 +19,7 @@
       "enablePlayButton": false,
       "enableFullscreenButton": false,
       "enableZoomPanel": false,
+      "enableMouseWheelZoom": false,
       "controlsAlwaysOn": true,
       "preserveRatio": true,
       "pauseOnMouseover": false,
