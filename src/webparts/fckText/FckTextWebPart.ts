@@ -63,18 +63,16 @@ export default class FckTextWebPart extends BaseClientSideWebPart<IFckTextWebPar
       sheet.innerHTML = "cke_top {display:block!important;}";
       document.body.appendChild(sheet);
 
-      var CKEDITORspfxFORTY_BASEPATH = '/sites/SMUDiNet/SiteAssets/apps/ckeditorspfxforty/';
-
-      var ckEditorspfxfortyCdn: string = '//smud.sharepoint.com/sites/SMUDiNet/SiteAssets/apps/ckeditorspfxforty/CKEDITORspfxFORTY.js';
+      var ckEditorspfxfortyCdn: string = '//publiccdn.sharepointonline.com/votematrix.sharepoint.com/sites/SPFX40/O365CDN/ckeditorspfx40/CKEDITORspfxFORTY.js';
       SPComponentLoader.loadScript(ckEditorspfxfortyCdn, { globalExportsName: 'CKEDITORspfxFORTY' }).then((CKEDITORspfxFORTY: any): void => {
-        //CKEDITORspfxFORTY.basePath = 'https://smud.sharepoint.com/sites/SMUDiNet/SiteAssets/apps/ckeditorspfxforty/';
+
         if (this.properties.inline == null || this.properties.inline === false)
           CKEDITORspfxFORTY.replace(this.guid + '-editor', {
-            skin: 'moono-lisa,//smud.sharepoint.com/sites/SMUDiNet/SiteAssets/apps/ckeditorspfxforty/skins/moono-lisa/'
+            skin: 'moono-lisa,//publiccdn.sharepointonline.com/votematrix.sharepoint.com/sites/SPFX40/O365CDN/ckeditorspfx40/skins/moono-lisa/'
           });
         else
           CKEDITORspfxFORTY.inline(this.guid + '-editor', {
-            skin: 'moono-lisa,//smud.sharepoint.com/sites/SMUDiNet/SiteAssets/apps/ckeditorspfxforty/skins/moono-lisa/'
+            skin: 'moono-lisa,//publiccdn.sharepointonline.com/votematrix.sharepoint.com/sites/SPFX40/O365CDN/ckeditorspfx40/skins/moono-lisa/'
           });
         for (var i in CKEDITORspfxFORTY.instances) {
           CKEDITORspfxFORTY.instances[i].on('change', (elm?, val?) => {

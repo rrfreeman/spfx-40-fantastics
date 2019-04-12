@@ -325,12 +325,12 @@ Main components
 
     if (this.displayMode == DisplayMode.Edit) {
 
-        var ckEditorspfxfortyCdn = 'smud.sharepoint.com/sites/SMUDiNet/SiteAssets/apps/ckeditorspfxforty/ckeditorspfxforty.js';
+        var ckEditorspfxfortyCdn = 'publiccdn.sharepointonline.com/votematrix.sharepoint.com/sites/SPFX40/O365CDN/ckeditorspfx40/ckeditorspfxforty.js';
         SPComponentLoader.loadScript(ckEditorspfxfortyCdn, { globalExportsName: 'CKEDITORspfxFORTY' }).then((CKEDITORspfxFORTY: any): void => {
           if (this.properties.inline == null || this.properties.inline === false) {
             for (var tab = 0; tab < this.properties.tabs.length; tab++) {
               CKEDITORspfxFORTY.replace( this.guid + '-editor-' + tab, {
-                    skin: 'moono-lisa,//smud.sharepoint.com/sites/SMUDiNet/SiteAssets/apps/ckeditorspfxforty/skins/moono-lisa/'
+                    skin: 'moono-lisa,//publiccdn.sharepointonline.com/votematrix.sharepoint.com/sites/SPFX40/O365CDN/ckeditorspfx40/skins/moono-lisa/'
               }  );
             }
 
@@ -338,7 +338,7 @@ Main components
           else {
             for (var tab2 = 0; tab2 < this.properties.tabs.length; tab2++) {
               CKEDITORspfxFORTY.inline( this.guid + '-editor-' + tab2, {
-                    skin: 'moono-lisa,//smud.sharepoint.com/sites/SMUDiNet/SiteAssets/apps/ckeditorspfxforty/skins/moono-lisa/'
+                    skin: 'moono-lisa,//publiccdn.sharepointonline.com/votematrix.sharepoint.com/sites/SPFX40/O365CDN/ckeditorspfx40/skins/moono-lisa/'
               }   );
             }
           }

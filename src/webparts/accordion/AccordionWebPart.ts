@@ -116,14 +116,14 @@ export default class AccordionWebPart extends BaseClientSideWebPart<IAccordionWe
 
     if (this.displayMode == DisplayMode.Edit) {
         //If the display mode is Edit, loads the CK Editor plugin
-        var ckEditorspfxfortyCdn = 'https://smud.sharepoint.com/sites/SMUDiNet/SiteAssets/apps/ckeditorspfxforty/CKEDITORspfxFORTY.js';
+        var ckEditorspfxfortyCdn = 'https://publiccdn.sharepointonline.com/votematrix.sharepoint.com/sites/SPFX40/O365CDN/ckeditorspfx40/CKEDITORspfxFORTY.js';
         //Loads the Javascript from the CKEditorspfxforty CDN
         SPComponentLoader.loadScript(ckEditorspfxfortyCdn, { globalExportsName: 'CKEDITORspfxFORTY' }).then((CKEDITORspfxFORTY: any): void => {
           if (this.properties.inline == null || this.properties.inline === false) {
             //If mode is not inline, loads the script with the replace method
             for (var tab = 0; tab < this.properties.tabs.length; tab++) {
               CKEDITORspfxFORTY.replace( this.guid + '-editor-' + tab, {
-                    skin: 'moono-lisa,//smud.sharepoint.com/sites/SMUDiNet/SiteAssets/apps/ckeditorspfxforty/skins/moono-lisa/'
+                    skin: 'moono-lisa,//publiccdn.sharepointonline.com/votematrix.sharepoint.com/sites/SPFX40/O365CDN/ckeditorspfx40/skins/moono-lisa/'
               });
             }
           }
@@ -131,7 +131,7 @@ export default class AccordionWebPart extends BaseClientSideWebPart<IAccordionWe
             //Mode is inline, so loads the script with the inline method
             for (var tab2 = 0; tab2 < this.properties.tabs.length; tab2++) {
               CKEDITORspfxFORTY.inline( this.guid + '-editor-' + tab2, {
-                    skin: 'moono-lisa,//smud.sharepoint.com/sites/SMUDiNet/SiteAssets/apps/ckeditorspfxforty/skins/moono-lisa/'
+                    skin: 'moono-lisa,//publiccdn.sharepointonline.com/votematrix.sharepoint.com/sites/SPFX40/O365CDN/ckeditorspfx40/skins/moono-lisa/'
               });
             }
           }
